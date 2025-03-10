@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model {
     use HasFactory;
 
+
+    protected $primaryKey = 'client_id';
+
     protected $fillable = [
         'client_name',
         'client_email',
@@ -15,7 +18,7 @@ class Client extends Model {
     ];
 
     public function accounts() {
-        return $this->hasMany(Account::class);
+        return $this->hasMany(Account::class, 'client_id');
     }
 
     public function cards()

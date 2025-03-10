@@ -12,14 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('cards', function (Blueprint $table) {
-            $table->id('card_id');
-            $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');
-            $table->foreignId('account_id')->constrained('accounts')->onDelete('cascade');
+            $table->bigIncrements('card_id');
+            $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('account_id');
             $table->string('card_number', 16)->unique();
             $table->enum('card_type', ['debit', 'credit']);
             $table->date('expiry_date');
             $table->string('cvv', 3);
             $table->timestamps();
+
+            $table->foreign('client_id')->references('client_id')->on('clients')->onDelete('cascade');
+            $table->foreign('account_id')->references('account_id')->on('accounts')->onDelete('cascade');
         });
     }
 

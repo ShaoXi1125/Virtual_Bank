@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('accounts', function (Blueprint $table) {
-            $table->id('account_id');
+            $table->bigIncrements('account_id');
             $table->string('account_number', 12)->unique();
             $table->unsignedBigInteger('client_id');
             $table->decimal('balance_amount', 10, 2)->default(0.00);
@@ -20,6 +20,7 @@ return new class extends Migration
 
             $table->foreign('client_id')->references('client_id')->on('clients')->onDelete('cascade');
         });
+
     }
 
     /**

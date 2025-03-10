@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('card_info', function (Blueprint $table) {
-            $table->id('card_id');
+            $table->bigIncrements('card_id');
             $table->string('card_number', 12)->unique();
             $table->unsignedBigInteger('client_id');
             $table->unsignedBigInteger('account_id');

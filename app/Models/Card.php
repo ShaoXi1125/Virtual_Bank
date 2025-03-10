@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class Card extends Model
 {
@@ -28,6 +30,6 @@ class Card extends Model
     // 获取银行卡余额（从 Account 读取）
     public function getBalanceAttribute()
     {
-        return $this->account->amount ?? 0.00;
+        return $this->account->balance_amount ?? 0.00;
     }
 }

@@ -25,3 +25,6 @@ Route::post('/accounts/{id}/withdraw', [AccountController::class, 'withdraw']); 
 Route::post('/transfer', [TradeRecordController::class, 'transfer']); // 转账
 Route::get('/transactions/{account_id}', [TradeRecordController::class, 'history']); // 获取交易记录
 
+// Card 相关
+Route::post('/clients/{client_id}/cards', [CardController::class, 'store']);
+Route::get('/clients/{client_id}/cards', [CardController::class, 'getUserCards']);

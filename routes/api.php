@@ -28,3 +28,5 @@ Route::get('/transactions/{account_id}', [TradeRecordController::class, 'history
 // Card 相关
 Route::post('/clients/{client_id}/cards', [CardController::class, 'store']);
 Route::get('/clients/{client_id}/cards', [CardController::class, 'getUserCards']);
+Route::post('/cards/transfer', [CardController::class, 'cardTransfer']); // 💳 卡片转账
+

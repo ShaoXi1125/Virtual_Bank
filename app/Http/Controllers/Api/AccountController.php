@@ -29,7 +29,7 @@ class AccountController extends Controller
 
     // 3. 充值账户
     public function deposit(Request $request, $id) {
-        $request->validate(['amount' => 'required|numeric|min:0.01']);
+        $request->validate(['amount' => 'required|numeric|min:1.00']);
 
         $account = Account::find($id);
         if (!$account) return response()->json(['error' => 'Account not found'], 404);
@@ -42,7 +42,7 @@ class AccountController extends Controller
 
     // 4. 扣款（支付）
     public function withdraw(Request $request, $id) {
-        $request->validate(['amount' => 'required|numeric|min:0.01']);
+        $request->validate(['amount' => 'required|numeric|min:1.00']);
 
         $account = Account::find($id);
         if (!$account) return response()->json(['error' => 'Account not found'], 404);

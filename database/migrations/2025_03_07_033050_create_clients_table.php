@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('client_name');
             $table->string('client_email')->unique();
             $table->string('client_phone')->nullable();
+            // $table->enum('client_type', ['individual', 'merchant'])->default('individual');
             $table->timestamps();
         });
     }

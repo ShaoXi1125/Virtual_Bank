@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
 
             // 外键约束，确保每个在线银行账户都有对应的客户端
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->foreign('client_id')->references('client_id')->on('clients')->onDelete('cascade');
         });
     }
 
